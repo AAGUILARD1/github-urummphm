@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ IMPORTACIÓN CORRECTA DE ÍCONOS
 import iconoMarketing from '../assets/icono-marketing.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
@@ -19,7 +18,7 @@ const Hero = () => {
     <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40">
       {/* Carrusel de íconos */}
       <div className="-mt-4 mb-6 overflow-hidden w-full">
-        <div className="animate-slide-icons flex whitespace-nowrap gap-16 items-center justify-center">
+        <div className="animate-scroll-x flex whitespace-nowrap gap-16 items-center justify-start w-max">
           {[...Array(2)].map((_, i) => (
             <React.Fragment key={i}>
               <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
@@ -121,3 +120,19 @@ const Hero = () => {
 };
 
 export default Hero;
+🧩 Agrega esta animación al CSS (si usas Tailwind, ponlo en globals.css o un CSS global):
+css
+Copiar
+Editar
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 25s linear infinite;
+}
