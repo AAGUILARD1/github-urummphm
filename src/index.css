@@ -1,0 +1,144 @@
+/* ------------------------
+   🎨 Fuentes Montserrat
+------------------------- */
+@import '@fontsource/montserrat/300.css';
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/montserrat/800.css';
+
+/* ------------------------
+   ⚙️ Tailwind
+------------------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------
+   🌐 Estilos Base
+------------------------- */
+@layer base {
+  html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  /* ✅ Ajuste para evitar redimensionamiento de video */
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  section {
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ------------------------
+   🌀 Carrusel Horizontal Íconos
+------------------------- */
+@layer utilities {
+  .animate-slide-icons {
+    display: flex;
+    animation: slideIcons 10s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-slide-icons:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slideIcons {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ------------------------
+   💬 Chatbot Bounce Animado
+------------------------- */
+@keyframes chatbotBounce {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.chatbot-animate {
+  animation: chatbotBounce 0.8s ease-out;
+}
+
+/* ------------------------
+   🖼️ Scrollbar Oculta
+------------------------- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------
+   🧼 Ajustes adicionales visuales
+------------------------- */
+html,
+body {
+  border: none;
+  outline: none;
+}
+
+section::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  background: transparent;
+}
+
+/* ------------------------
+   ✨ NUEVO: Fade-in inicial para videos
+------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
