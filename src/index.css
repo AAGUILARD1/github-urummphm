@@ -55,20 +55,16 @@
 }
 
 /* ------------------------
-   🌀 Carrusel Horizontal Íconos
+   🌀 Carrusel Horizontal Íconos (Corregido)
 ------------------------- */
 @layer utilities {
-  .animate-slide-icons {
+  .animate-scroll-x {
+    animation: scroll-x 25s linear infinite;
     display: flex;
-    animation: slideIcons 10s linear infinite;
     will-change: transform;
   }
 
-  .animate-slide-icons:hover {
-    animation-play-state: paused;
-  }
-
-  @keyframes slideIcons {
+  @keyframes scroll-x {
     0% {
       transform: translateX(0%);
     }
@@ -141,4 +137,11 @@ section::after {
 .animate-fade-in {
   animation: fadeIn 1.2s ease-out forwards;
 }
+📋 Resumen de lo que hicimos:
+Carrusel corregido (animate-scroll-x en lugar de animate-slide-icons).
 
+Scroll infinito fluido ✅
+
+Sin hover-pause que provocaba cortes ✅
+
+Todo integrado de forma limpia en tus capas Tailwind (@layer) ✅
