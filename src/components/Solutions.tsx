@@ -13,7 +13,7 @@ const services = [
   },
   {
     title: 'Automatización que impulsa tus ventas con precisión. Convierte más con procesos inteligentes y escalables.',
-    video: '/video-servicio-2.mp4',
+    video: '/ventas.mp4',
     icon: iconoChatbot,
   },
   {
