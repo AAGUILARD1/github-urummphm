@@ -29,7 +29,6 @@ const slides = [
 const Services = () => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [hasStarted, setHasStarted] = useState(false);
   const duration = 8000;
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]).current;
 
@@ -37,7 +36,6 @@ const Services = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-      setHasStarted(true);
     }, duration);
   };
 
@@ -48,7 +46,6 @@ const Services = () => {
 
   const changeSlide = (index: number) => {
     setCurrent(index);
-    setHasStarted(true);
   };
 
   const nextSlide = () => changeSlide((current + 1) % slides.length);
@@ -71,7 +68,7 @@ const Services = () => {
         className="max-w-5xl mx-auto text-center"
       >
         <motion.h2
-          whileHover={{ scale: 1.02, textShadow: '0 0 10px rgba(64,102,131,0.3)' }}
+          whileHover={{ scale: 1.02 }}
           className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6 transition-all"
         >
           Nuestros Servicios
@@ -92,8 +89,8 @@ const Services = () => {
         </motion.p>
 
         {/* SLIDER */}
-        <div {...handlers} className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
-          {/* Flechas ocultables en móviles */}
+        <div {...handlers} className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black">
+          {/* Botones de navegación */}
           <motion.button
             onClick={prevSlide}
             className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
@@ -114,8 +111,8 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Video background */}
-          <div className="absolute top-0 left-0 w-full h-full z-10">
+          {/* Videos */}
+          <div className="absolute top-0 left-0 w-full h-full">
             {slides.map((slide, index) => (
               <video
                 key={slide.video}
@@ -125,14 +122,13 @@ const Services = () => {
                 loop
                 playsInline
                 preload="auto"
-                onCanPlay={() => index === current && videoRefs[index]?.play()}
                 ref={(el) => (videoRefs[index] = el)}
-                className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ${
-                  index === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  index === current ? 'opacity-100' : 'opacity-0'
                 }`}
               />
             ))}
-            <div className="absolute inset-0 bg-black/40 z-20" />
+            <div className="absolute inset-0 bg-black/40 z-10" />
           </div>
 
           {/* Texto */}
@@ -141,7 +137,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="absolute bottom-6 left-6 right-6 text-left z-30"
+            className="absolute bottom-6 left-6 right-6 text-left z-20"
           >
             <h3 className="text-white text-xl md:text-2xl font-semibold drop-shadow-md">
               {slides[current].title}
