@@ -30,7 +30,6 @@ const Services = () => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const duration = 8000;
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]).current;
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -89,11 +88,11 @@ const Services = () => {
         </motion.p>
 
         {/* SLIDER */}
-        <div {...handlers} className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black">
-          {/* Botones de navegación */}
+        <div {...handlers} className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
+          {/* Flechas (ocultas en móvil) */}
           <motion.button
             onClick={prevSlide}
-            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
             whileHover={{ scale: 1.1 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +102,7 @@ const Services = () => {
 
           <motion.button
             onClick={nextSlide}
-            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
             whileHover={{ scale: 1.1 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,27 +110,27 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Videos */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            {slides.map((slide, index) => (
-              <video
-                key={slide.video}
-                src={slide.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                ref={(el) => (videoRefs[index] = el)}
-                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                  index === current ? 'opacity-100' : 'opacity-0'
-                }`}
-              />
-            ))}
-            <div className="absolute inset-0 bg-black/40 z-10" />
-          </div>
+          {/* Video visible */}
+          <motion.div
+            key={slides[current].video}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute top-0 left-0 w-full h-full"
+          >
+            <video
+              src={slides[current].video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </motion.div>
 
-          {/* Texto */}
+          {/* Texto encima */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 30 }}
