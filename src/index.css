@@ -39,7 +39,6 @@
     position: relative;
   }
 
-  /* ✅ Ajuste para evitar redimensionamiento de video */
   video {
     display: block;
     width: 100%;
@@ -71,6 +70,18 @@
     100% {
       transform: translateX(-50%);
     }
+  }
+
+  /* Nuevo ajuste para slider en móvil */
+  .slider-wrapper {
+    @apply relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black;
+    padding-left: 0.5rem; /* Añadido */
+    padding-right: 0.5rem; /* Añadido */
+  }
+
+  /* Suavidad adicional para transiciones */
+  .video-transition {
+    transition: opacity 1s ease-in-out;
   }
 }
 
@@ -127,7 +138,7 @@ section::after {
 }
 
 /* ------------------------
-   ✨ NUEVO: Fade-in inicial para videos
+   ✨ Fade-in inicial para videos
 ------------------------- */
 @keyframes fadeIn {
   from { opacity: 0; }
