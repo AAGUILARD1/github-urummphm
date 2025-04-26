@@ -18,12 +18,12 @@ const services = [
   },
   {
     title: 'Impulsa tu negocio con herramientas inteligentes que optimizan cada área de forma estratégica.',
-    video: '/video-servicio-3.mp4',
+    video: '/herramientas.mp4',
     icon: iconoSoluciones,
   },
   {
     title: 'Creamos soluciones que no solo automatizan procesos, sino que los perfeccionan continuamente.',
-    video: '/video-servicio-4.mp4',
+    video: '/perfeccionan.mp4',
     icon: iconoMarketing,
   },
 ];
