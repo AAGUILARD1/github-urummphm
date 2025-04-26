@@ -12,14 +12,14 @@ const services = [
     icon: iconoCRM,
   },
   {
-    title: 'Automatización que impulsa tus ventas con precisión. Convierte más con procesos inteligentes y escalables.',
-    video: '/ventas.mp4',
-    icon: iconoChatbot,
-  },
-  {
     title: 'Impulsa tu negocio con herramientas inteligentes que optimizan cada área de forma estratégica.',
     video: '/herramientas.mp4',
     icon: iconoSoluciones,
+  },
+  {
+    title: 'Automatización que impulsa tus ventas con precisión. Convierte más con procesos inteligentes y escalables.',
+    video: '/ventas.mp4',
+    icon: iconoChatbot,
   },
   {
     title: 'Creamos soluciones que no solo automatizan procesos, sino que los perfeccionan continuamente.',
