@@ -120,19 +120,3 @@ const Hero = () => {
 };
 
 export default Hero;
-🧩 Agrega esta animación al CSS (si usas Tailwind, ponlo en globals.css o un CSS global):
-css
-Copiar
-Editar
-@keyframes scroll-x {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll-x {
-  animation: scroll-x 25s linear infinite;
-}
