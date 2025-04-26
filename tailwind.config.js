@@ -31,11 +31,16 @@ export default {
           '0%': { opacity: 0, transform: 'scale(0.95)' },
           '100%': { opacity: 1, transform: 'scale(1)' },
         },
+        scrollX: { /* 🎯 NUEVO para el carrusel */
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'slide-infinite': 'slideInfinite 40s linear infinite',
         'fade-up': 'fadeUp 1s ease-out forwards',
         'scale-in': 'scaleIn 0.8s ease-out forwards',
+        'scroll-x': 'scrollX 25s linear infinite', /* 🎯 NUEVO para el carrusel */
       },
       boxShadow: {
         subtle: '0 2px 12px rgba(0,0,0,0.05)',
