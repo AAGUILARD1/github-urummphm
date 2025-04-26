@@ -137,11 +137,3 @@ section::after {
 .animate-fade-in {
   animation: fadeIn 1.2s ease-out forwards;
 }
-📋 Resumen de lo que hicimos:
-Carrusel corregido (animate-scroll-x en lugar de animate-slide-icons).
-
-Scroll infinito fluido ✅
-
-Sin hover-pause que provocaba cortes ✅
-
-Todo integrado de forma limpia en tus capas Tailwind (@layer) ✅
